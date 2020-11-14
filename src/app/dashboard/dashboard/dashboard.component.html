@@ -1,0 +1,172 @@
+<p-table
+  #dt
+  [value]="customers"
+  dataKey="id"
+  [rows]="10"
+  [showCurrentPageReport]="true"
+  [rowsPerPageOptions]="[5, 10, 25, 50, 100]"
+  [loading]="loading"
+  styleClass="p-datatable-customers"
+  [paginator]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [filterDelay]="0"
+  [globalFilterFields]="[
+    'name',
+    'status',
+    'payment'
+  ]"
+>
+  <ng-template pTemplate="caption">
+    <div class="p-d-flex">
+      <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()"
+              class="p-button-success p-mr-2" pTooltip="XLS" tooltipPosition="bottom"></button>
+      <!--      <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning p-mr-2"-->
+      <!--              pTooltip="PDF" tooltipPosition="bottom"></button>-->
+    </div>
+    <div class="table-header">
+      List of Students
+      <span class="p-input-icon-left">
+        <!-- <i class="pi pi-search"></i> -->
+        <input
+          pInputText
+          type="text"
+          (input)="dt.filterGlobal($event.target.value, 'contains')"
+          placeholder="Global Search"
+        />
+      </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <!-- <th>Representative</th> -->
+      <th>Date</th>
+      <th>Status</th>
+      <th>Payment</th>
+      <th>Amount</th>
+    </tr>
+    <tr>
+      <th>
+        <input
+          pInputText
+          type="text"
+          (input)="dt.filter($event.target.value, 'name', 'startsWith')"
+          placeholder="Search by Name"
+          class="p-column-filter"
+        />
+      </th>
+      <th>
+        <input
+          pInputText
+          type="text"
+          (input)="dt.filter($event.target.value, 'email', 'contains')"
+          placeholder="Search by Email"
+          class="p-column-filter"
+        />
+      </th>
+      <!-- <th>
+        <p-multiSelect
+          [options]="representatives"
+          placeholder="All"
+          (onChange)="onRepresentativeChange($event)"
+          styleClass="p-column-filter"
+          optionLabel="name"
+        >
+          <ng-template let-option pTemplate="item">
+            <div class="p-multiselect-representative-option">
+              <span class="p-ml-1">{{ option.label }}</span>
+            </div>
+          </ng-template>
+        </p-multiSelect>
+      </th> -->
+      <th>
+        <p-calendar
+          (onSelect)="onDateSelect($event)"
+          (onClearClick)="dt.filter('', 'date', 'equals')"
+          [showButtonBar]="true"
+          styleClass="p-column-filter"
+          placeholder="Registration Date"
+          [readonlyInput]="true"
+          dateFormat="yy-mm-dd"
+        ></p-calendar>
+      </th>
+      <th>
+        <p-dropdown
+          [options]="statuses"
+          (onChange)="dt.filter($event.value, 'status', 'equals')"
+          styleClass="p-column-filter"
+          placeholder="Select a Status"
+          [showClear]="true"
+        >
+          <ng-template let-option pTemplate="item">
+            <span [class]="'customer-badge status-' + option.value">{{
+              option.label
+              }}</span>
+          </ng-template>
+        </p-dropdown>
+      </th>
+      <th>
+        <input
+          pInputText
+          type="text"
+          (input)="dt.filter($event.target.value, 'payment', 'startsWith')"
+          placeholder="Payment"
+          class="p-column-filter"
+        />
+      </th>
+      <th></th>
+      <!--      <th>-->
+      <!--        <input-->
+      <!--          pInputText-->
+      <!--          type="text"-->
+      <!--          (input)="onActivityChange($event)"-->
+      <!--          placeholder="Payment"-->
+      <!--          class="p-column-filter"-->
+      <!--        />-->
+      <!--      </th>-->
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-customer>
+    <tr>
+      <td>
+        {{ customer.name }}
+      </td>
+      <td>
+        <span class="image-text">{{ customer.email }}</span>
+      </td>
+      <!--      <td>-->
+      <!--        <span class="image-text">{{ customer.representative.name }}</span>-->
+      <!--      </td> -->
+      <td>
+        {{ customer.date }}
+      </td>
+      <td>
+        <span [class]="'customer-badge status-' + customer.status">{{
+          customer.status
+          }}</span>
+      </td>
+      <td>
+        <span [class]="'customer-badge status-' + customer.payment">{{
+          customer.payment
+          }}</span>
+      </td>
+      <td>
+        <span [class]="'customer-badge status-' + customer.payment">{{
+          customer.amount | currency: 'GHS': 'GHS '
+          }}</span>
+      </td>
+      <!--      <td>-->
+      <!--        <p-progressBar-->
+      <!--          [value]="customer.amount"-->
+      <!--          [showValue]="false"-->
+      <!--        ></p-progressBar>-->
+      <!--      </td>-->
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="6">No Student found.</td>
+    </tr>
+  </ng-template>
+</p-table>
