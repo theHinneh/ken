@@ -7,7 +7,7 @@ COPY package*.json ./
 RUN npm install --only=development
 
 COPY . .
-
+RUN npm i rimraf
 RUN npm run build
 
 FROM node:12 as production
