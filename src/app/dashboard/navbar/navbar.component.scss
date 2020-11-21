@@ -1,0 +1,22 @@
+
+:host ::ng-deep {
+  .p-menubar.p-component {
+    background: #edf2d0;
+  }
+
+  .p-menuitem-text {
+    color: #211d1e;
+  }
+
+  .p-menubar-button {
+    position: absolute;
+    right: 0;
+  }
+
+  p-menubarsub {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+}

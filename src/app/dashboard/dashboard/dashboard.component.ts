@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Student} from './student';
-import {CustomerService} from './customerservice';
+import {Student} from '../student';
+import {CustomerService} from '../customerservice';
 import {Table} from 'primeng/table';
 
 @Component({

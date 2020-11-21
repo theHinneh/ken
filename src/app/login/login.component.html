@@ -1,0 +1,27 @@
+<div class="login">
+  <p-card [style]="{width: '360px'}" styleClass="p-card-shadow">
+<!--    <p-header>-->
+<!--      <img alt="Card" src="assets/images/logo.jpg">-->
+<!--    </p-header>-->
+    <div class="p-grid p-fluid">
+      <div class="p-col-12 p-md-4 first">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+          <input type="text" pInputText placeholder="Username">
+        </div>
+      </div>
+
+      <div class="p-col-12 p-md-4">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+          <input type="password" pInputText placeholder="password">
+        </div>
+      </div>
+    </div>
+    <ng-template pTemplate="footer">
+      <p-button (click)="login()" label="Login"></p-button>
+      <!--      <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary"-->
+      <!--                [style]="{'margin-left': '.5em'}"></p-button>-->
+    </ng-template>
+  </p-card>
+</div>

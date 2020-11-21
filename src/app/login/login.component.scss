@@ -1,0 +1,46 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('~src/assets/images/logo.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-color: #e8f0c7;
+
+  .first {
+    margin-bottom: 10px;
+  }
+
+  p-button {
+    width: 100%;
+  }
+}
+
+:host ::ng-deep {
+  .p-grid.p-fluid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .p-col-12.p-md-4 {
+    width: 100%;
+  }
+
+  .p-card-footer {
+    display: flex;
+    justify-content: center;
+  }
+
+  input {
+    width: 100%;
+    border: none;
+    border: 1px solid #b0d255;
+  }
+
+  button {
+    width: 100%;
+  }
+}
