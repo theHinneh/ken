@@ -5,7 +5,7 @@ import { Students } from '../src/students/students.entity';
 export const typeOrmConfig: TypeOrmModuleOptions = {
   type: 'postgres',
   host: 'localhost',
-  username: 'postgres',
+  username: 'theHinneh',
   password: 'admin',
   port: 5432,
   database: 'bless-wheels',

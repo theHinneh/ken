@@ -8,7 +8,7 @@ import { StudentsModule } from './students/students.module';
   imports: [
     TypeOrmModule.forRoot(typeOrmConfig),
     AuthModule,
-    StudentsModule
+    StudentsModule,
   ],
   controllers: [],
   providers: [],
